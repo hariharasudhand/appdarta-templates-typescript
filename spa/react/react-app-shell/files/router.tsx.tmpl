@@ -1,13 +1,6 @@
 import { createBrowserRouter } from 'react-router-dom';
 import Layout from './components/Layout';
-
-// TODO: add screens from your UI flow spec (specs/ui/screens.yaml)
-const Dashboard = () => (
-  <div>
-    <h1>{{ title .Domain }} Dashboard</h1>
-    <p>Add your screens in src/pages/ and register them here.</p>
-  </div>
-);
+import Dashboard from './pages/Dashboard';
 
 export const router = createBrowserRouter([
   {

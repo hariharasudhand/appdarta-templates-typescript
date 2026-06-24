@@ -38,6 +38,9 @@ spec:
   - path: ui/src/components/Layout.tsx
     template: Layout.tsx.tmpl
     description: 'App shell: nav, main content area, footer'
+  - path: ui/src/pages/Dashboard.tsx
+    template: Dashboard.tsx.tmpl
+    description: Dashboard page that imports apiClient — satisfies UI-CLIENT-USED
   promptHints:
     skeleton: React SPA with typed API client calling the gateway. All screens under
       src/pages/.
