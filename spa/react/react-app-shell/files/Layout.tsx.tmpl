@@ -1,12 +1,26 @@
+// Copyright (c) 2026 AppDarta / product of dhruvialabs.com. All rights reserved.
+
 import { Outlet, NavLink } from 'react-router-dom';
+
+// Styles extracted into a plain object to avoid JSX double-brace syntax
+// conflicts with template rendering (Go templates use {{ }}).
+const S: Record<string, React.CSSProperties> = {
+  root:   { display: 'flex', flexDirection: 'column', minHeight: '100vh' },
+  header: { padding: '12px 24px', borderBottom: '1px solid #e2e8f0',
+            display: 'flex', alignItems: 'center', gap: 24 },
+  brand:  { fontWeight: 700, fontSize: 18 },
+  nav:    { display: 'flex', gap: 16 },
+  main:   { flex: 1, padding: '24px' },
+  footer: { padding: '12px 24px', borderTop: '1px solid #e2e8f0',
+            fontSize: 12, color: '#94a3b8', textAlign: 'center' },
+};
 
 export default function Layout() {
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', minHeight: '100vh' }}>
-      <header style={{ padding: '12px 24px', borderBottom: '1px solid #e2e8f0',
-                       display: 'flex', alignItems: 'center', gap: 24 }}>
-        <span style={{ fontWeight: 700, fontSize: 18 }}>{{ title .Domain }}</span>
-        <nav style={{ display: 'flex', gap: 16 }}>
+    <div style={S.root}>
+      <header style={S.header}>
+        <span style={S.brand}>{{ title .Domain }}</span>
+        <nav style={S.nav}>
           <NavLink to="/" end style={({ isActive }) => ({ color: isActive ? '#6366f1' : '#64748b' })}>
             Dashboard
           </NavLink>
@@ -15,13 +29,12 @@ export default function Layout() {
         </nav>
       </header>
 
-      <main style={{ flex: 1, padding: '24px' }}>
+      <main style={S.main}>
         <Outlet />
       </main>
 
-      <footer style={{ padding: '12px 24px', borderTop: '1px solid #e2e8f0',
-                       fontSize: 12, color: '#94a3b8', textAlign: 'center' }}>
-        {{ title .Domain }} · {{ .Domain }}
+      <footer style={S.footer}>
+        {{ title .Domain }} &middot; {{ .Domain }}
       </footer>
     </div>
   );
