@@ -3,7 +3,7 @@
 import { Outlet, NavLink } from 'react-router-dom';
 
 // Styles extracted into a plain object to avoid JSX double-brace syntax
-// conflicts with template rendering (Go templates use {{ }}).
+// conflicts with Go template rendering (double-brace actions).
 const S: Record<string, React.CSSProperties> = {
   root:   { display: 'flex', flexDirection: 'column', minHeight: '100vh' },
   header: { padding: '12px 24px', borderBottom: '1px solid #e2e8f0',
